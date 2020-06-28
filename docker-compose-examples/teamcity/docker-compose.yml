@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    teamcity:
+        image: sjoerdmulder/teamcity
+        ports:
+            - 8111:8111
+    teamcity-agent:
+        image: sjoerdmulder/teamcity-agent
+        environment:
+            - TEAMCITY_SERVER=http://teamcity:8111
+    postgres:
+        image: postgres
+        environment:
+            - POSTGRES_DB=teamcity
